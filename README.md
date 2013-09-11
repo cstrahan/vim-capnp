@@ -1,6 +1,6 @@
 # About
 
-Vim syntax highlighting for [Cap'n Proto][capnp] schema files.
+Vim syntax highlighting (and folding) for [Cap'n Proto][capnp] schema files.
 
 # Contributing
 
