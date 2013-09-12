@@ -28,7 +28,7 @@ syn match capnpFileId "@0x[a-fA-F0-9]\+"
 syn match capnpAnnotation "$[^;()]\+"
 
 " Braces
-syn region  jsonFold matchgroup=capnpBraces start="{" end="}" transparent fold
+syn region capnpFold matchgroup=capnpBraces start="{" end="}" transparent fold
 
 " Highlighting
 hi link capnpComment      Comment
