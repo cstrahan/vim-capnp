@@ -7,7 +7,7 @@ if exists("b:current_syntax")
 endif
 
 " Keywords
-syn keyword capnpKeyword using import struct union enum
+syn keyword capnpKeyword using import struct union enum interface extends const annotation
 
 " Types
 syn match capnpType ":[.a-zA-Z0-9()]\+"
