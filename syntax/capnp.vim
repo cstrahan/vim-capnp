@@ -20,7 +20,13 @@ syn match capnpArrow "->"
 syn region capnpImport start=/\$?import\s*"/ skip=/\\"/ end=/"/
 
 " Types
-syn match capnpType "\s*:\s*\zs[.a-zA-Z0-9()]\+\ze"
+syn cluster capnpTypeGroup contains=capnpTypeBrand,capnpBuiltinType,capnpImport
+syn keyword capnpBuiltinType contained Void Bool Text Data List union group
+syn keyword capnpBuiltinType contained Int8 Int16 Int32 Int64
+syn keyword capnpBuiltinType contained UInt8 UInt16 UInt32 UInt64
+syn keyword capnpBuiltinType contained Float32 Float64
+syn region capnpType start=/:/ end=/[^\sa-zA-Z0-9_\.]/re=s-1,he=s-1 contains=@capnpTypeGroup
+syn region capnpTypeBrand transparent contained start=/(/ end=/)/
 
 " Literals
 syn region capnpString start=/"/ skip=/\\"/ end=/"/
@@ -51,6 +57,7 @@ hi link capnpString       String
 hi link capnpNumber       Number
 hi link capnpHex          Number
 hi link capnpType         Type
+hi link capnpBuiltinType  Type
 hi link capnpOrdinal      Identifier
 hi link capnpFileId       Identifier
 hi link capnpAnnotation   Statement
