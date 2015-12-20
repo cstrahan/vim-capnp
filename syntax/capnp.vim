@@ -6,37 +6,52 @@ if exists("b:current_syntax")
   finish
 endif
 
-" Keywords
-syn keyword capnpKeyword using import struct union enum
+syn case match
 
-" Types
-syn match capnpType ":[.a-zA-Z0-9()]\+"
+syn keyword capnpTodo       contained TODO FIXME XXX
+syn cluster capnpCommentGrp contains=capnpTodo
 
-" Strings
-syn region capnpString start=/"/ skip=/\\"/ end=/"/
+syn keyword capnpInclude    import using
+syn keyword capnpStructure  annotation struct union
+syn keyword capnpInterface  interface extends
 
-" Comments
-syn match capnpComment "#.*$"
+syn match   capnpType       /:[a-zA-Z0-9]\+/
+syn keyword capnpTypedef    const enum
 
-" Ordinals
-syn match capnpOrdinal "@[a-fA-F0-9]\+"
+syn keyword capnpBool       true false
+syn match   capnpInt        /-\?\<\d\+\>/
+syn match   capnpInt        /\<0[xX]\x+\>/
+syn match   capnpFloat      /\<-\?\d*\(\.\d*\)\?/
+syn match   capnpRocket     /->/
+syn match   capnpComment    /#.*$/
+syn region  capnpString     start=/"/ skip=/\\"/ end=/"/
 
-" File IDs
-syn match capnpFileId "@0x[a-fA-F0-9]\+"
+syn match   capnpList       /:List([a-zA-Z0-9()]\+)/
+syn match   capnpTag        /@[a-fA-F0-9]\+/
+syn match   capnpId         /@0x[a-fA-F0-9]\+/
+syn match   capnpAnnotation /$[^;()]\+/
 
-" Annotations
-syn match capnpAnnotation "$[^;()]\+"
+syn region  capnpFold       matchgroup=capnpBraces start="{" end="}" transparent fold
 
-" Braces
-syn region capnpFold matchgroup=capnpBraces start="{" end="}" transparent fold
+hi def link capnpTodo       Todo
 
-" Highlighting
-hi link capnpComment      Comment
-hi link capnpKeyword      Keyword
-hi link capnpString       String
-hi link capnpType         Type
-hi link capnpOrdinal      Identifier
-hi link capnpFileId       Identifier
-hi link capnpAnnotation   Statement
+hi def link capnpInclude    Include
+hi def link capnpStructure  Structure
+hi def link capnpInterface  Keyword
+
+hi def link capnpType       Type
+hi def link capnpTypedef    Typedef
+
+hi def link capnpBool       Boolean
+hi def link capnpInt        Number
+hi def link capnpFloat      Float
+hi def link capnpRocket     Keyword
+hi def link capnpComment    Comment
+hi def link capnpString     String
+
+hi def link capnpList       Type
+hi def link capnpTag        Identifier
+hi def link capnpId         Identifier
+hi def link capnpAnnotation Identifier
 
 let b:current_syntax = "capnp"
