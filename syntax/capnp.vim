@@ -37,7 +37,6 @@ syn match capnpOrdinal "@[a-fA-F0-9]\+"
 syn match capnpFileId "@0x[a-fA-F0-9]\+"
 
 " Annotations
-"syn match capnpAnnotation "$[^;()]\+"
 syn region capnpAnnotation start=/\$/ end=/[;()\n]/re=s-1,he=s-1 oneline contains=capnpImport
 
 " Braces
