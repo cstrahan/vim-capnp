@@ -33,6 +33,7 @@ syn region capnpTypeBrand transparent contained start=/(/ end=/)/
 syn region capnpString start=/"/ skip=/\\"/ end=/"/
 syn match capnpNumber /\<[0-9]\+/
 syn match capnpHex /\<0x[0-9a-fA-F]\+/
+syn keyword capnpBoolean true false
 
 " Comments
 syn match capnpComment "#.*$" contains=@Spell,@capnpCommentGroup
@@ -57,6 +58,7 @@ hi link capnpImport       Include
 hi link capnpString       String
 hi link capnpNumber       Number
 hi link capnpHex          Number
+hi link capnpBoolean      Boolean
 hi link capnpType         Type
 hi link capnpBuiltinType  Type
 hi link capnpOrdinal      Identifier
