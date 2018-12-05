@@ -39,7 +39,6 @@ syn match capnpFloat display contained /\.\d\+\([eE][-+]\=\d\+\)\=\>/
 syn match capnpFloat display contained /\d\+[eE][-+]\=\d\+\>/
 syn keyword capnpBoolean true false
 syn keyword capnpFloat inf
-"syn match capnpFloat /\<((([0-9]\+(\.[0-9]*)?)|(\.[0-9]+))
 
 " Comments
 syn match capnpComment "#.*$" contains=@Spell,@capnpCommentGroup
