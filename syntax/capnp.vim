@@ -14,7 +14,7 @@ syn cluster capnpCommentGroup contains=capnpTodo
 " Keywords
 syn keyword capnpDeclaration struct union enum interface const annotation
 syn keyword capnpKeyword using extends
-syn match capnpArrow "->"
+syn match capnpArrow display "->"
 
 " Imports
 syn region capnpImport start=/\$?import\s*"/ skip=/\\"/ end=/"/
@@ -44,10 +44,10 @@ syn keyword capnpFloat inf
 syn match capnpComment "#.*$" contains=@Spell,@capnpCommentGroup
 
 " Ordinals
-syn match capnpOrdinal "@[a-fA-F0-9]\+"
+syn match capnpOrdinal display "@[a-fA-F0-9]\+"
 
 " File IDs
-syn match capnpFileId "@0x[a-fA-F0-9]\+"
+syn match capnpFileId display "@0x[a-fA-F0-9]\+"
 
 " Annotations
 syn region capnpAnnotation start=/\$/ end=/[;()\n]/re=s-1,he=s-1 oneline contains=capnpImport
