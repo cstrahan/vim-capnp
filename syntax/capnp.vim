@@ -31,9 +31,15 @@ syn region capnpTypeBrand transparent contained start=/(/ end=/)/
 
 " Literals
 syn region capnpString start=/"/ skip=/\\"/ end=/"/
-syn match capnpNumber /\<[0-9]\+/
-syn match capnpHex /\<0x[0-9a-fA-F]\+/
+syn match capnpNumbers display transparent /\<\d\|\.\d/ contains=capnpNumber,capnpFloat
+syn match capnpNumber display contained /\d\+\>/
+syn match capnpNumber display contained /0x\x\+\>/
+syn match capnpFloat display contained /\d\+\.\d*\([eE][-+]\=\d\+\)\=/
+syn match capnpFloat display contained /\.\d\+\([eE][-+]\=\d\+\)\=\>/
+syn match capnpFloat display contained /\d\+[eE][-+]\=\d\+\>/
 syn keyword capnpBoolean true false
+syn keyword capnpFloat inf
+"syn match capnpFloat /\<((([0-9]\+(\.[0-9]*)?)|(\.[0-9]+))
 
 " Comments
 syn match capnpComment "#.*$" contains=@Spell,@capnpCommentGroup
@@ -57,7 +63,7 @@ hi link capnpKeyword      Keyword
 hi link capnpImport       Include
 hi link capnpString       String
 hi link capnpNumber       Number
-hi link capnpHex          Number
+hi link capnpFloat        Float
 hi link capnpBoolean      Boolean
 hi link capnpType         Type
 hi link capnpBuiltinType  Type
