@@ -25,7 +25,8 @@ syn keyword capnpBuiltinType contained Void Bool Text Data List union group
 syn keyword capnpBuiltinType contained Int8 Int16 Int32 Int64
 syn keyword capnpBuiltinType contained UInt8 UInt16 UInt32 UInt64
 syn keyword capnpBuiltinType contained Float32 Float64
-syn region capnpType start=/:/ end=/[^\sa-zA-Z0-9_\.]/re=s-1,he=s-1 contains=@capnpTypeGroup
+" FIXME: Incorrectly colours multi-line contents in parentheses:
+syn region capnpType start=/:\s*\zs/ end=/[^\sa-zA-Z0-9_\.]/ contains=@capnpTypeGroup
 syn region capnpTypeBrand transparent contained start=/(/ end=/)/
 
 " Literals
