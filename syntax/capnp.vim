@@ -10,7 +10,7 @@ endif
 syn keyword capnpKeyword using import struct union enum
 
 " Types
-syn match capnpType ":[.a-zA-Z0-9()]\+"
+syn match capnpType "\s*:\s*\zs[.a-zA-Z0-9()]\+\ze"
 
 " Strings
 syn region capnpString start=/"/ skip=/\\"/ end=/"/
