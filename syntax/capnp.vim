@@ -12,16 +12,21 @@ syn keyword capnpTodo contained TODO FIXME XXX
 syn cluster capnpCommentGroup contains=capnpTodo
 
 " Keywords
-syn keyword capnpKeyword using import struct union enum interface extends const annotation
+syn keyword capnpDeclaration struct union enum interface const annotation
+syn keyword capnpKeyword using extends
+syn match capnpArrow "->"
+
+" Imports
+syn region capnpImport start=/\$?import\s*"/ skip=/\\"/ end=/"/
 
 " Types
 syn match capnpType "\s*:\s*\zs[.a-zA-Z0-9()]\+\ze"
 
-" Strings
+" Literals
 syn region capnpString start=/"/ skip=/\\"/ end=/"/
 
 " Comments
-syn match capnpComment "#.*$" contains=@capnpCommentGroup
+syn match capnpComment "#.*$" contains=@Spell,@capnpCommentGroup
 
 " Ordinals
 syn match capnpOrdinal "@[a-fA-F0-9]\+"
@@ -30,19 +35,23 @@ syn match capnpOrdinal "@[a-fA-F0-9]\+"
 syn match capnpFileId "@0x[a-fA-F0-9]\+"
 
 " Annotations
-syn match capnpAnnotation "$[^;()]\+"
+"syn match capnpAnnotation "$[^;()]\+"
+syn region capnpAnnotation start=/\$/ end=/[;()\n]/re=s-1,he=s-1 oneline contains=capnpImport
 
 " Braces
 syn region capnpFold matchgroup=capnpBraces start="{" end="}" transparent fold
 
 " Highlighting
 hi link capnpComment      Comment
+hi link capnpDeclaration  Structure
 hi link capnpKeyword      Keyword
+hi link capnpImport       Include
 hi link capnpString       String
 hi link capnpType         Type
 hi link capnpOrdinal      Identifier
 hi link capnpFileId       Identifier
 hi link capnpAnnotation   Statement
 hi link capnpTodo         Todo
+hi link capnpArrow        Operator
 
 let b:current_syntax = "capnp"
