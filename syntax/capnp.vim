@@ -6,6 +6,11 @@ if exists("b:current_syntax")
   finish
 endif
 
+syn case match
+
+syn keyword capnpTodo contained TODO FIXME XXX
+syn cluster capnpCommentGroup contains=capnpTodo
+
 " Keywords
 syn keyword capnpKeyword using import struct union enum interface extends const annotation
 
@@ -16,7 +21,7 @@ syn match capnpType "\s*:\s*\zs[.a-zA-Z0-9()]\+\ze"
 syn region capnpString start=/"/ skip=/\\"/ end=/"/
 
 " Comments
-syn match capnpComment "#.*$"
+syn match capnpComment "#.*$" contains=@capnpCommentGroup
 
 " Ordinals
 syn match capnpOrdinal "@[a-fA-F0-9]\+"
@@ -38,5 +43,6 @@ hi link capnpType         Type
 hi link capnpOrdinal      Identifier
 hi link capnpFileId       Identifier
 hi link capnpAnnotation   Statement
+hi link capnpTodo         Todo
 
 let b:current_syntax = "capnp"
