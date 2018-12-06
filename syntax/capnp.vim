@@ -1,6 +1,6 @@
 " Vim syntax file
 " Language: capnp
-" Maintainer: Charles Strahan
+" Maintainer: Andreas Misje
 
 if exists("b:current_syntax")
   finish
