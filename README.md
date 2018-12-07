@@ -29,4 +29,8 @@ If you have any ideas, feel free to open an issue and/or pull request!
 - [Stanislav Ivochkin](https://github.com/ivochkin)
 - [Ross Light](https://github.com/zombiezen)
 
+# License
+
+See the `LICENSE` file in this repository.
+
 [capnp]: https://capnproto.org "Cap'n Proto"
