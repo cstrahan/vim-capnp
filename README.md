@@ -8,14 +8,14 @@ Proto][capnp] schema files.
 ### Pathogen
 
 ```bash
-git clone https://github.com/misje/vim-capnp.git ~/.vim/bundle/vim-capnp
+git clone https://github.com/cstrahan/vim-capnp.git ~/.vim/bundle/vim-capnp
 ```
 
 ### Vundle
 
 Add the following to *$MYVIMRC* (after `call vundle#rc()`):
 ```vim
-Plugin 'misje/vim-capnp'
+Plugin 'cstrahan/vim-capnp'
 ```
 
 # Contributing
